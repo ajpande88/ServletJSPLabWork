@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import= "com.message.MessageBo"%>
+<%@ page import= "com.message.Data"%>
+<%@ page import=" java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,8 +20,8 @@ body {
 </head>
 <body>
  
-    <div align="center" style="margin-top: 50px;">
-      <% MessageBo message =(MessageBo) request.getAttribute("message");
+    <%-- <div align="center" style="margin-top: 50px;">
+      <% ArrayList<Data> list =(request.getAttribute("list");
          if(message==null){
         	 	message=new MessageBo("");
          }
@@ -26,7 +29,19 @@ body {
         <h1><%=message.getMessage() %></h1>
         </form>
  
-    </div>
- 
+    </div> --%>
+ <c:forEach items="${list}" var="data">
+    <tr>      
+       
+        <td>${data.name}</td>  
+        <td>${data.date}</td>
+        <td>${data.description}</td>
+        <td>${data.quantity }</td>
+        <td>${data.price}</td>
+        
+    </tr>
+    </br>
+</c:forEach>
+
 </body>
 </html>
